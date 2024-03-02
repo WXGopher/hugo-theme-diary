@@ -25,7 +25,8 @@
             </span>
         </a>
         {{ end }}
-        {{ if and (.Page.IsNode) (not (.Data.Terms)) (ne .Name "Posts") (gt .Paginator.TotalPages 1) }}
+        {{ if and (.Paginator) (not (.Data.Terms)) }}
+        {{ if gt .Paginator.TotalPages 1 }}
 
         <a class="pagination-action" {{ if .Paginator.HasPrev }} href="{{.Paginator.Prev.URL}}">
             {{ else }}
@@ -52,6 +53,7 @@
                 chevron_right
             </i>
         </a>
+        {{ end }}
         {{ end }}
     </div>
 </div>
