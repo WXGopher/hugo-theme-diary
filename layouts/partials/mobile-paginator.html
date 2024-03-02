@@ -1,5 +1,4 @@
-{{ if and (.Paginator) (not (.Data.Terms)) }}
-{{ if gt .Paginator.TotalPages 1 }}
+{{ if and (.Page.IsNode) (not (.Data.Terms)) (ne .Name "Posts") (gt .Paginator.TotalPages 1) }}
 <div class="pagination">
     {{ if .Paginator.HasPrev }}
     <a class="pagination-action" href="{{.Paginator.Prev.URL}}" style="opacity:1">
@@ -26,6 +25,4 @@
                 </i>
             </a>
 </div>
-{{ end }}
-
 {{ end }}
